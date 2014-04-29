@@ -1,0 +1,17 @@
+<!doctype html>
+<html ng-app lang="en">
+<!-- Remember to mention on the HTML tag that it is an ng-app -->
+<head>
+  <meta charset="UTF-8">
+  <title>First Angular App</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.7/angular.min.js"></script>
+  <!-- Remember to put Angular into the page -->
+</head>
+<body>
+  Name:<input ng-model="name" type="text" />
+  <!-- the input should be bound to the property of the angular model -->
+  Hello {{name}}
+  <!-- use the value from "name" from the model -->
+  <!-- this is called "data-binding" -->
+</body>
+</html>
