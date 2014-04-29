@@ -1,16 +1,18 @@
 <!doctype html>
-<html ng-app lang="en">
+<html ng-app="nameApp" lang="en">
 <!-- Remember to mention on the HTML tag that it is an ng-app -->
+<!-- with a defined angular module -->
 <head>
   <meta charset="UTF-8">
   <title>First Angular App</title>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.7/angular.min.js"></script>
   <!-- Remember to put Angular into the page -->
   <script>
-    function NameCtrl($scope){
+    var nameApp = angular.module('nameApp', []);
+    nameApp.controller('NameCtrl', function ($scope){
       $scope.firstName = 'John';
       $scope.lastName = 'Smith';
-    }
+    });
   </script>
   <!-- Initializing the model using an Angular controller, defined with a global function -->
 </head>
