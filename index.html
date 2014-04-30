@@ -41,12 +41,17 @@
 <!-- this is called "data-binding" -->
   </div>
 
+<br>Fancy input and filtering code:
+<br>
 <!-- learning ng-init and ng-repeat -->
   <div ng-init="languages=['Javascript', 'Java', 'Ruby']">
     <input ng-model="currentLanguage" type="text"><button ng-click="languages.push(currentLanguage); currentLanguage = undefined;">Add</button>
+    <br>Filter: <input type="text" ng-model="filterLanguage">
 <!-- ng-click = on click. AngularJS's expressions are a bit similar to JavaScript constructs so you can use well familiar methods -->
     <ul>
-      <li ng-repeat="language in languages"><button ng-click="languages.splice($index,1)">x</button>
+      <li ng-repeat="language in languages | filter: filterLanguage">
+<!-- You apply filter called filter with parameter filterLanguage to the collection languages. Now when you type in the filtering text box and the items of the unordered list will be automatically filtered for you. -->
+      <button ng-click="languages.splice($index,1)">x</button>
 <!-- you can iterate through each item inside your collection by using the following syntax: item in collection -->
       {{language + ' is number ' + ($index + 1) + ' in the array'}}</li>
     </ul>
