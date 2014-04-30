@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <title>First Angular App</title>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.7/angular.min.js"></script>
-  <!-- Remember to put Angular into the page -->
+<!-- Remember to put Angular into the page -->
   <script>
     var nameApp = angular.module('nameApp', []);
     nameApp.controller('NameCtrl', function ($scope){
@@ -14,32 +14,34 @@
       $scope.lastName = 'Smith';
     });
   </script>
-  <!-- Initializing the model using an Angular controller, defined with a global function -->
+<!-- Initializing the model using an Angular controller, defined with a global function -->
 </head>
+
+
 <body>
   <div ng-controller="NameCtrl">
-  <!-- Added directive to use NameCtrl as the controller -->
+<!-- Added directive to use NameCtrl as the controller -->
     First Name:<input ng-model="firstName" type="text" />
     <br>
     Last Name:<input ng-model="lastName" type="text">
-    <!-- the input should be bound to the property of the angular model -->
+<!-- the input should be bound to the property of the angular model -->
     <br><b>Hello {{firstName}} {{lastName}}!</b>
-    <!-- use the value from "name" from the model -->
-    <!-- this is called "data-binding" -->
+<!-- use the value from "name" from the model -->
+<!-- this is called "data-binding" -->
   </div>
   <br><br>
   <div>
-  <!-- This is not part of the ng-controller NameCtrl, therefore it does not initialize with what's stated in the scope -->
+<!-- This is not part of the ng-controller NameCtrl, therefore it does not initialize with what's stated in the scope -->
     First Name:<input ng-model="firstName" type="text" />
     <br>
     Last Name:<input ng-model="lastName" type="text">
-    <!-- the input should be bound to the property of the angular model -->
+<!-- the input should be bound to the property of the angular model -->
     <br><b>Hello {{firstName}} {{lastName}}!</b>
-    <!-- use the value from "name" from the model -->
-    <!-- this is called "data-binding" -->
+<!-- use the value from "name" from the model -->
+<!-- this is called "data-binding" -->
   </div>
 
-  <!-- learning ng-init and ng-repeat -->
+<!-- learning ng-init and ng-repeat -->
   <div ng-init="languages=['Javascript', 'Java', 'Ruby']">
     <ul>
       <li ng-repeat="language in languages">
@@ -47,5 +49,14 @@
       {{language + ' is number ' + ($index + 1) + ' in the array'}}</li>
     </ul>
   </div>
+
+<!-- ng-bind vs {{expression}} -->
+  <div>
+    {{ 'The answer is ' + (26 + 16) }}
+    <span ng-bind="'The answer is ' + (26 + 16)"></span>
+  </div>
+<!-- It is preferable to use ngBind instead of {{ expression }} when a template is momentarily displayed by the browser in its raw state before Angular compiles it. Since ngBind is an element attribute, it makes the bindings invisible to the user while the page is loading. -->
+
+
 </body>
 </html>
