@@ -27,6 +27,7 @@
     <!-- use the value from "name" from the model -->
     <!-- this is called "data-binding" -->
   </div>
+  <br><br>
   <div>
   <!-- This is not part of the ng-controller NameCtrl, therefore it does not initialize with what's stated in the scope -->
     First Name:<input ng-model="firstName" type="text" />
@@ -36,6 +37,13 @@
     <br><b>Hello {{firstName}} {{lastName}}!</b>
     <!-- use the value from "name" from the model -->
     <!-- this is called "data-binding" -->
+  </div>
+
+  <!-- learning ng-init and ng-repeat -->
+  <div ng-init="languages=['Javascript', 'Java', 'Ruby']">
+    <ul>
+      <li ng-repeat="language in languages">{{language + ' is number ' + ($index + 1) + ' in the array'}}</li>
+    </ul>
   </div>
 </body>
 </html>
