@@ -42,7 +42,9 @@
   <!-- learning ng-init and ng-repeat -->
   <div ng-init="languages=['Javascript', 'Java', 'Ruby']">
     <ul>
-      <li ng-repeat="language in languages">{{language + ' is number ' + ($index + 1) + ' in the array'}}</li>
+      <li ng-repeat="language in languages">
+<!-- you can iterate through each item inside your collection by using the following syntax: item in collection -->
+      {{language + ' is number ' + ($index + 1) + ' in the array'}}</li>
     </ul>
   </div>
 </body>
