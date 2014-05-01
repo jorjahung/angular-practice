@@ -12,20 +12,26 @@
     Task: <input type="text" ng-model="currentTodoTask"><br>
     <button ng-click='addTodo()'>Add</button>
 
+    <br><br>
+    Filter tasks: <input type="text" ng-model="filterValue">
+
     <ul>
-      <li ng-repeat="todo in todos">{{todo.name}}: {{todo.task}}</li><button ng-click'removeTodo()'>X</button>
+      <li ng-repeat="todo in todos | filter:filterValue">{{todo.name}}: {{todo.task}}  <button ng-click='removeTodo()'>X</button></li>
+     
     </ul>
   </div>
 
   <script>
     function TodoCtrl($scope) {
-      $scope.todos = [];
+      $scope.todos = [
+        {name: "Jorja", task: "First task"}
+      ];
       $scope.addTodo = function () {
         $scope.todos.push({ name: $scope.currentTodoName, task: $scope.currentTodoTask } ); 
         $scope.currentTodoName = undefined;
         $scope.currentTodoTask = undefined;
       };
-      $scope.removeTodo = function () {
+      $scope.removeTodo = function (index) {
         $scope.todos.splice(index, 1);
       };
     };
