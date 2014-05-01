@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="todoApp">
 <head>
   <meta charset="UTF-8">
   <title>To Do List</title>
@@ -11,31 +11,55 @@
     ul {
       list-style-type: none;
     }
+    header {
+      background: yellow;
+      padding: 5px;
+      text-align: center;
+      border: 1px solid black;
+      width: 30%;
+      margin: auto auto;
+    }
+    h1 {
+      margin: 3px;
+    }
+    section {
+      border: 1px solid black;
+      background: lightblue;
+      padding: 5px;
+      text-align: center;
+      border: 1px solid black;
+      width: 50%;
+      margin: 10px auto;
+    }
   </style>
 
 </head>
 <body ng-controller="TodoCtrl">
-  <div>
-    Name: <input type="text" ng-model="currentTodoName"><br>
-    Task: <input type="text" ng-model="currentTodoTask"><br>
+  <header>
+    <h1>New Task</h1>
+    <input type="text" ng-model="currentTodoName" placeholder="Name"><br>
+    <input type="text" ng-model="currentTodoTask" placeholder="Task"><br>
     <button ng-click='addTodo()'>Add</button>
+  </header>
 
-    <br><br>
+  <section>
     Filter tasks: <input type="text" ng-model="filterValue">
 
     <ul>
       <li ng-repeat="todo in todos | filter:filterValue track by $index" ng-class="(todo.completed) ? 'completed' : ''"><input type="checkbox" ng-model="todo.completed"> {{todo.name}}: {{todo.task}}  <button ng-click='removeTodo()'>X</button></li>
-     
     </ul>
-  </div>
+  </section>
 
   <script>
-    function TodoCtrl($scope) {
+    var todoApp = angular.module('todoApp', []);
+
+    todoApp.controller('TodoCtrl', function ($scope){
       $scope.todos = [
         { name: "Jorja",
           task: "First task",
           completed: false }
       ];
+
       $scope.addTodo = function () {
         $scope.todos.push({ 
           name: $scope.currentTodoName, 
@@ -44,10 +68,12 @@
         $scope.currentTodoName = undefined;
         $scope.currentTodoTask = undefined;
       };
+
       $scope.removeTodo = function (index) {
         $scope.todos.splice(index, 1);
       };
-    };
+
+    });
   </script>
 </body>
 </html>
